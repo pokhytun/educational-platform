@@ -14,11 +14,11 @@
             </aside>
             <div class="all-courses">
                 <div class="courses-list courses-list_width">
-                    @include('components.course-card')    
-                    @include('components.course-card')    
-                    @include('components.course-card')    
-                    @include('components.course-card')    
-                    @include('components.course-card')    
+
+                    @foreach ($courses as $course)
+                        @include('components.course-card', ['course' => $course]) 
+                    @endforeach
+       
                 </div>
             </div>
         </div>

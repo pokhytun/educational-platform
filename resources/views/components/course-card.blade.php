@@ -1,5 +1,5 @@
 <div href="#" class="courses-item">
-    <div class="courses__category">UI/UX designe</div>
+    <div class="courses__category">{{$course->category->title}}</div>
     <div class="courses-body">
         <div class="courses-body__img">  
             <a href="#" class="courses-body__img-link">
@@ -7,18 +7,14 @@
             </a>
         </div>
         <div class="courses-body__contetnt">
-                <a href="#" class="link link_color_purple">Interpersonal skills - work better with others!</a>
+                <a href="#" class="link link_color_purple">{{$course->title}}</a>
             <div class="rating-result courses-rating_result">
-                <span class="star star_active"></span>	
-                <span class="star star_active"></span>    
-                <span class="star star_active"></span>  
-                <span class="star "></span>    
-                <span class="star "></span>
-                <div class="rating__number">(266)</div>
+                <span class="star star_{{$course->getAvgRating()}}"></span>	
+                <div class="rating__number">({{count($course->reviews)}})</div>
             </div>
             <div class="courses-body__prices">
                 <s class="courses-body__price_crossed">$640</s>
-                <span class="courses-body__price">$384</span>
+                <span class="courses-body__price">{{$course->price->price}}$</span>
             </div>
         </div>
     </div>

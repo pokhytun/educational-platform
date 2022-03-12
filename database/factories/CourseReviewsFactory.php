@@ -20,7 +20,7 @@ class CourseReviewsFactory extends Factory
     public function definition()
     {
         return [
-            'rating' => $this->faker->numberBetween(0,5),
+            'rating' => $this->faker->numberBetween(1,5),
             'review' => $this->faker->text(20),
             'course_id' => function(){
                 return Course::orderBy(DB::raw('RAND()'))->first()->id;
