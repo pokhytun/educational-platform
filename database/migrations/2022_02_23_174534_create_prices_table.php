@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-
+            $table->float('price');
             $table->unsignedBigInteger('course_id');
             $table->softDeletes();
             $table->foreign('course_id')->references('id')->on('courses');

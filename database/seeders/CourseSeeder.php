@@ -2,17 +2,19 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
-use App\Models\Role;
-use App\Models\User;
+use App\Models\Course;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class CourseSeeder extends Seeder
 {
-    
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
     public function run()
     {
-        User::factory()->count(5)->create();
+        Course::factory()->create();
     }
 }
