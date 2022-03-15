@@ -9,7 +9,7 @@
         <div class="courses-body__contetnt">
                 <a href="#" class="link link_color_purple">{{$course->title}}</a>
             <div class="rating-result courses-rating_result">
-                <span class="star star_{{$course->getAvgRating()}}"></span>	
+                <span class="star star_{{round($course->reviews_avg_rating)}}"></span>	
                 <div class="rating__number">({{count($course->reviews)}})</div>
             </div>
             <div class="courses-body__prices">

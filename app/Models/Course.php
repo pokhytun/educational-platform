@@ -24,9 +24,5 @@ class Course extends Model
         return $this->hasOne(Price::class);
     }
 
-    
-    public function getAvgRating(){
-        return round($this->reviews->pluck('rating')->avg());
-    }
 
 }
