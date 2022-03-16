@@ -13,8 +13,19 @@
                 <div class="rating__number">({{count($course->reviews)}})</div>
             </div>
             <div class="courses-body__prices">
-                <s class="courses-body__price_crossed">$640</s>
-                <span class="courses-body__price">{{$course->price->price}}$</span>
+                
+                @if ($course->discount_exists)
+                    <s class="courses-body__price_crossed">
+                        {{$course->price->price}}$
+                    </s> 
+                    <span class="courses-body__price">
+                        {{$course->price_with_discount}}$
+                    </span>
+                @else
+                    <span class="courses-body__price">
+                        {{$course->price->price}}$
+                    </span>
+                @endif
             </div>
         </div>
     </div>

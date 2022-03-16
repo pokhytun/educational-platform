@@ -10,10 +10,14 @@ class CatalogController extends Controller
 
     public function index(){
 
-        $courses = Course::withAvg('reviews', 'rating')->get();
-    
+        $courses = Course::withAvg('reviews', 'rating')
+                            ->withExists('discount')                
+                            ->get();
+
+        
         return view('catalog.index', [
             'courses' => $courses
         ]);
     } 
 }
+

@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
     use HasFactory;
+
 
     public function reviews()
     {
@@ -24,5 +26,12 @@ class Course extends Model
         return $this->hasOne(Price::class);
     }
 
+    public function discount(){
+        return $this->hasOne(Discount::class);
+    }
 
+
+    public function getPriceWithDiscountAttribute(){
+        return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
+    }
 }
