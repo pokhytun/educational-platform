@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/' , [IndexController::class, 'index']);
 
-Route::get('/catalog', [CatalogController::class, 'index']);
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.inedx');
 
 Auth::routes();
 

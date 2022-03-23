@@ -44,10 +44,12 @@
                 <button class="trending-courses__link btn">Арт та Дизайн</button>
             </div>  
             <div class="courses-list">
-                @include('components.course-card')    
+                @foreach ($courses as $course)
+                    @include('components.course-card' , ['course' => $course ])
+                @endforeach                  
             </div>
             <div class="trending-courses__more">
-                <a href="#"class="btn btn_bg_pink">Більше курсів</a>
+                <a href="{{route('catalog.inedx')}}"class="btn btn_bg_pink">Більше курсів</a>
             </div>
         </div>
     </div>
@@ -56,7 +58,9 @@
     <div class="container">
         <div class="title title_purple">Топ категорії</div>
         <div class="categories__body">
-            @include('components.category-card')
+            @foreach ($categories as $category)
+                @include('components.category-card', ['category', $category])
+            @endforeach
         </div>
     </div>
 </div>
