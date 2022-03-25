@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\CourseFilter;
 use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
 
-    public function index(){
+    public function index(CourseFilter $request){
 
-        $courses = Course::withAvg('reviews', 'rating')
+        $courses = Course::filter($request)
+                            ->withAvg('reviews', 'rating')
                             ->withExists('discount')                
                             ->get();
 

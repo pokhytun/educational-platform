@@ -5,10 +5,10 @@ use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/' , [IndexController::class, 'index']);
+Route::get('/' , [IndexController::class, 'index'])->name('home.index');
 
-Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.inedx');
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

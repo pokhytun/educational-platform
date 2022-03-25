@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Filters\QueryFilter;
 use Attribute;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +35,9 @@ class Course extends Model
 
     public function getPriceWithDiscountAttribute(){
         return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
+    }
+
+    public function scopeFilter(Builder $builder, QueryFilter $filter){
+        return $filter->apply($builder);
     }
 }

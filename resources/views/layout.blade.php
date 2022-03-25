@@ -9,10 +9,10 @@
 </head>
 <body>
     <header class="header">
-        <a href="#" class="logo"><img src="{{asset('storage/img/front/logo.png')}}" alt="Logoipsum"></a>
-        <form action="#" class="search-form">
+        <a href="{{route('home.index')}}" class="logo"><img src="{{asset('storage/img/front/logo.png')}}" alt="Logoipsum"></a>
+        <form action="{{route('catalog.index')}}" class="search-form">
             <div class="search-form__body search-form__body_with_icon">
-                <input class="search-form__input" placeholder="Шукати тут..."></input>
+                <input class="search-form__input" name="search_field" laceholder="Шукати тут..."></input>
             </div>
         </form>
         <nav class="navigation">
