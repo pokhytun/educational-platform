@@ -5,20 +5,17 @@ namespace App\Filters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class QueryFilter
+abstract class QueryFilter
 {
-    public $request;
+    protected $request;
+
     protected $builder;
+
     protected $delimiter = ',';
 
     public function __construct(Request $request)
     {
         $this->request = $request;
-    }
-
-    public function filters()
-    {
-        return $this->request->query();
     }
 
     public function apply(Builder $builder)
@@ -34,8 +31,13 @@ class QueryFilter
         return $this->builder;
     }
 
+    public function filters()
+    {
+        return $this->request->query();
+    }
+
     protected function paramToArray($param)
     {
-        return explode($this->delimiter, $param);
+        return explode($this->delimiter, implode($this->delimiter, $param));
     }
 }

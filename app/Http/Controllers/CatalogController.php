@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Filters\CourseFilter;
 use App\Models\Course;
+use App\Models\CourseCategory;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -17,8 +18,10 @@ class CatalogController extends Controller
                             ->get();
 
         
+        
         return view('catalog.index', [
-            'courses' => $courses
+            'courses' => $courses,
+            'categories' => CourseCategory::all(),
         ]);
     } 
 }
