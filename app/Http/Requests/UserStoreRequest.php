@@ -27,7 +27,7 @@ class UserStoreRequest extends FormRequest
             'first_name' => ['required', 'string', 'max:255','min:2'],
             'last_name' => ['string', 'max:255','min:2'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8','confirmed'],
             'login' => ['required', 'string', 'max:15','min:5'],
             'phone_number' => 'required|regex:/^\+?3?8?(0\d{9})$/',
             'photo' => 'mimes:jpeg,bmp,png',

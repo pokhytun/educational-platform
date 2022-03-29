@@ -16,10 +16,8 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
 {
     
-
     use RegistersUsers;
 
-    
     protected $redirectTo = '/';
 
     public function __construct()
@@ -29,16 +27,11 @@ class RegisterController extends Controller
 
  
  
-
- 
-    protected function create(array $data )
+    protected function create(array $data)
     {   
-
         
         $path = $data['photo']->store('img\users','public');
-
-        
-        
+                
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],

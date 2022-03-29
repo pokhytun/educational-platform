@@ -32,6 +32,9 @@ class Course extends Model
         return $this->hasOne(Discount::class);
     }
 
+    public function buyers(){
+        return $this->belongsToMany(User::class, 'sold_courses');
+    }
 
     public function getPriceWithDiscountAttribute(){
         return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
@@ -40,4 +43,6 @@ class Course extends Model
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
     }
+
+
 }

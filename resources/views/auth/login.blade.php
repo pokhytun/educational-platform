@@ -6,7 +6,7 @@
     <div class="auth-wrapper">
         <div class="font_montserat">
             <div class="auth-block">
-                <label for="email" class="auth-label auth-label_margin auth-label__require">Електронна адреса</label>
+                <label for="email" class="auth-label auth-label_margin ">Електронна адреса</label>
                 <input type="text" name="email" id="email" class="auth-input auth-input_margin" placeholder="Електронна адреса" >
             </div>
             <div class="auth-block">
