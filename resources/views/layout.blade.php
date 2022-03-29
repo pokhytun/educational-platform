@@ -11,15 +11,26 @@
     <header class="header">
         <a href="{{route('home.index')}}" class="logo"><img src="{{asset('storage/img/front/logo.png')}}" alt="Logoipsum"></a>
         <form action="{{route('catalog.index')}}" class="search-form">
+            @csrf
             <div class="search-form__body search-form__body_with_icon">
-                <input class="search-form__input" name="search_field" laceholder="Шукати тут..."></input>
+                <input class="search-form__input" name="search_field" laceholder="Шукати тут...">
             </div>
         </form>
         <nav class="navigation">
             <ul class="navigation__list">
                 <a href="#" class="navigation__item link link_color_purple">Стати викладачем</a>
-                <a href="#" class="navigation__item btn btn_bg_transparent">Увійти</a>
-                <a href="#" class="navigation__item btn btn_bg_pink">Зареєструватись</a>
+                @guest
+                    <a href="{{route('login')}}" class="navigation__item btn btn_bg_transparent">Увійти</a> 
+                    <a href="{{route('register')}}" class="navigation__item btn btn_bg_pink">Зареєструватись</a>  
+                @endguest
+                @auth
+                    <a href="" class="navigation__item"><img class="user-img_header" src="storage\{{Auth::user()->photo}}" alt=""></a>
+                    <a href="#" class="navigation__item link link_color_purple">{{Auth::user()->first_name}}</a> 
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <input type="submit" value="Вихід" class="logout logout_margin">
+                    </form>
+                @endauth
             </ul>
         </nav>
     </header>

@@ -125,7 +125,8 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => ':attribute вже використовуєтсья',
+    // 'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute must be a valid URL.',
     'uuid' => 'The :attribute must be a valid UUID.',
@@ -158,6 +159,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'first_name' => "Ім'я",
+        'last_name' => "Прізвище",
+        'password' => "Пароль",
+        'email' => "Електронна адреса",
+        'login' => "Логін",
+        'phone' => "Телефон",
+        'photo' => "Фото",
+
+    ],
 
 ];
