@@ -24,7 +24,7 @@
                     <a href="{{route('register')}}" class="navigation__item btn btn_bg_pink">Зареєструватись</a>  
                 @endguest
                 @auth
-                    <a href="" class="navigation__item"><img class="user-img_header" src="storage\{{Auth::user()->photo}}" alt=""></a>
+                    <a href="" class="navigation__item"><img class="user-img_header" src="{{asset('storage') }}\{{Auth::user()->photo}}" alt=""></a>
                     <a href="#" class="navigation__item link link_color_purple">{{Auth::user()->first_name}}</a> 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST">
                         @csrf

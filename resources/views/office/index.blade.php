@@ -15,9 +15,7 @@
             <div class="wish-list tab-content tab-1 personal_margin block_active">
                 <div class="all-courses">
                     <div class="courses-list courses-list_width">
-                        @foreach ($purchasedCourses as $course)
-                            @include('components.course-card', ['course' => $course]) 
-                        @endforeach 
+                      
                     </div>
                 </div>
             </div>

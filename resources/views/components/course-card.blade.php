@@ -2,7 +2,7 @@
     <div class="courses__category">{{$course->category->title}}</div>
     <div class="courses-body">
         <div class="courses-body__img">  
-            <a href="#" class="courses-body__img-link">
+            <a href="{{ route('course.show' , ['course' => $course->id]) }}" class="courses-body__img-link">
                 <img src="{{asset('storage/img/courses/imgc.png')}}" alt="" class="img-responsive">
             </a>
         </div>
