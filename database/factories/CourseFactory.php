@@ -22,7 +22,7 @@ class CourseFactory extends Factory
     {
         return [
             'title' => $this->faker->text(5),
-            'description' => $this->faker->text(20) ,
+            'description' => $this->faker->text(700) ,
             'photo' => 'path',
             'language_id' => function(){
                 return TranslationLanguage::orderBy(DB::raw('RAND()'))->first()->id;
