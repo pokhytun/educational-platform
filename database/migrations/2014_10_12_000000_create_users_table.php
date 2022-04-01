@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('last_name')->nullable();
             $table->string('login',50)->unique();
             $table->string('email')->unique();
+            $table->string('description')->nullable();
             $table->string('password');
             $table->string('phone_number', 30)->uniqid();
             $table->string('photo')->default('storage/img/users/default.png');

@@ -36,6 +36,17 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'sold_courses');
     }
 
+    public function objectives(){
+        return $this->hasMany(CourseObjectives::class);
+    }
+
+    public function modules(){
+        return $this->hasMany(CourseModule::class);
+    }
+
+    public function teacher(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
     public function getPriceWithDiscountAttribute(){
         return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
     }
@@ -44,5 +55,5 @@ class Course extends Model
         return $filter->apply($builder);
     }
 
-
+  
 }

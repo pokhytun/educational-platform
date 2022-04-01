@@ -17,5 +17,6 @@ Route::get('/office', [PersonalOfficeController::class, 'index'])->name('office.
 Route::get('/catalog/{course}', [CourseController::class, 'show'])->name('course.show');
 
 
+
 Auth::routes();
 

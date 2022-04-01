@@ -23,7 +23,7 @@ class UserFactory extends Factory
             'login' => $this->faker->userName(),
             'email' => $this->faker->email(),
             'phone_number' => $this->faker->phoneNumber(),
-            'password' => 12345678, // password
+            'password' => 12345678, 
             'remember_token' => Str::random(10),
         ];
     }
