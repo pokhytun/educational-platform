@@ -43,4 +43,12 @@ class User extends Authenticatable
         return $this->hasMany(Course::class,'user_id');
     }
 
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+
+   public function reviews(){
+      return $this->hasMany(CourseReviews::class); 
+   }
+   
 }

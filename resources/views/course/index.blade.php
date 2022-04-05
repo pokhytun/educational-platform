@@ -3,7 +3,7 @@
 @section('content')
 <div class="container course_container">
     <div class="aboute-course aboute-course_wrapper">
-        <div class="course-info">
+        <div class="course-info" data-course_id={{$course->id}}>
             <div class="title title_purple">{{$course->title}}</div>
             <p class="description desc_margin font_montserat">{{$course->description}}</p>
         </div>
@@ -98,16 +98,37 @@
                 </nav>
             </div>
         </div>
-        <div class="reviews font_montserat">
+        <div class="reviews  course_margin font_montserat">
             <div class="title title_purple module-title_margin">Відгуки</div>
+            <form class="review-form review-form_margin">
+                <textarea class="review__input" type="text" placeholder="Залишити відгук" name="textarea"></textarea>
+                <div class="review__btn">
+                    <div id="send-review"class="btn btn_bg_pink ">Коментувати</div type="submit">
+                        <div class="rating-area">
+                            <input type="radio" id="star-5" name="rating" value="5">
+                            <label for="star-5" title="Оцінка «5»"></label>	
+                            <input type="radio" id="star-4" name="rating" value="4">
+                            <label for="star-4" title="Оцінка «4»"></label>    
+                            <input type="radio" id="star-3" name="rating" value="3">
+                            <label for="star-3" title="Оцінка «3»"></label>  
+                            <input type="radio" id="star-2" name="rating" value="2">
+                            <label for="star-2" title="Оцінка «2»"></label>    
+                            <input type="radio" id="star-1" name="rating" value="1" checked>
+                            <label for="star-1" title="Оцінка «1»"></label>
+                        </div>
+                </div>
+            </form>
             <nav class="reviews__list">
-                <ul id="comment-data">
-                
-                    @foreach ($comments as $review)
-                        @include('components.review-item', ['review', $review])   
-                    @endforeach
+                <ul id="my-comment">
+                    
+                </ul>
+                <ul id="comment-data" data-count="{{$comm_sum}}">
+                    
                 </ul>
             </nav>
+            <div class="gif-block">
+                <img src="{{asset('storage/img/front/gif-loading.gif')}}" alt="" class="gif-loading">
+            </div>
         </div>
     </div>
     <aside>
@@ -141,12 +162,12 @@
                     <div class="course-card__btn">
                         <a href="#" class="btn btn_bg_pink btn_responsive">Купити</a>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </aside>
 </div>
 
+    
 
 @endsection

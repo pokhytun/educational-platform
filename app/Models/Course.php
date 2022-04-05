@@ -47,6 +47,7 @@ class Course extends Model
     public function teacher(){
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function getPriceWithDiscountAttribute(){
         return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
     }
