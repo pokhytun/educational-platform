@@ -1,7 +1,7 @@
 <li class="reviews__item">
     <div class="review__head">
         <div class="comentatator-info">
-            <img src="{{asset('storage/img/users/default.png')}}" alt="" class="comentator__photo">
+            <img src="{{asset('storage') }}\{{$review->user->photo}}" alt="user photo" class="comentator__photo">
             <div class="review-info font_rubik">
                 <div class="comentator__name">{{$review->user->first_name}} {{$review->user->last_name}}</div>
                 <span class="star_{{$review->rating}} reviews_star"></span>

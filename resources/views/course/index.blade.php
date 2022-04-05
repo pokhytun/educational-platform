@@ -56,44 +56,19 @@
                 <div class="feadback__rating">{{bcdiv($course->reviews_avg_rating , 1, 1);}}</div>
                 <span class="star_{{round($course->reviews_avg_rating)}} star_big"></span>
             </div>
+            <div hidden id="rating">{!! json_encode($rating) !!}</div>
             <div class="rating-strips font_montserat">
                 <nav class="rating-strips__list">
                     <ul>
-                        <li class="rating-strips__item">
-                            <div class="strip strip_margin">
-                                <div class="strip_fill"></div>
-                            </div>
-                            <span class="star_5 star_middle"></span>
-                            <span class="rating-stiprs__count-review">233 відгуки</span>
-                        </li>
-                        <li class="rating-strips__item">
-                            <div class="strip strip_margin">
-                                <div class="strip_fill"></div>
-                            </div>
-                            <span class="star_4 star_middle"></span>
-                            <span class="rating-stiprs__count-review">233 відгуки</span>
-                        </li>
-                        <li class="rating-strips__item">
-                            <div class="strip strip_margin">
-                                <div class="strip_fill"></div>
-                            </div>
-                            <span class="star_3 star_middle"></span>
-                            <span class="rating-stiprs__count-review">233 відгуки</span>
-                        </li>
-                        <li class="rating-strips__item">
-                            <div class="strip strip_margin">
-                                <div class="strip_fill"></div>
-                            </div>
-                            <span class="star_2 star_middle"></span>
-                            <span class="rating-stiprs__count-review">233 відгуки</span>
-                        </li>
-                        <li class="rating-strips__item">
-                            <div class="strip strip_margin">
-                                <div class="strip_fill"></div>
-                            </div>
-                            <span class="star_1 star_middle"></span>
-                            <span class="rating-stiprs__count-review">233 відгуки</span>
-                        </li>
+                        @foreach ($rating as $key => $item)
+                            <li class="rating-strips__item">
+                                <div class="strip strip_margin">
+                                    <div class="strip_fill"></div>
+                                </div>
+                                <span class="star_{{$key}} star_middle"></span>
+                                <span class="rating-stiprs__count-review">( {{$item}} оцінок)</span>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
             </div>
@@ -103,7 +78,7 @@
             <form class="review-form review-form_margin">
                 <textarea class="review__input" type="text" placeholder="Залишити відгук" name="textarea"></textarea>
                 <div class="review__btn">
-                    <div id="send-review"class="btn btn_bg_pink ">Коментувати</div type="submit">
+                    <div id="send-review"class="btn btn_bg_pink ">Коментувати</div>
                         <div class="rating-area">
                             <input type="radio" id="star-5" name="rating" value="5">
                             <label for="star-5" title="Оцінка «5»"></label>	

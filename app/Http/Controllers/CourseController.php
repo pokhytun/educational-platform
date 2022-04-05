@@ -19,9 +19,10 @@ class CourseController extends BaseController
                     ->with('reviews')
                     ->first();
 
-
         
-        return view('course.index',['course' => $c, 'comm_sum' => count($course->reviews)]);
+        $rating = $course->reviews->sortByDesc('rating')->pluck('rating')->countBy();
+        
+        return view('course.index',['course' => $c, 'comm_sum' => count($course->reviews) , 'rating' => $rating]);
     }
 
 

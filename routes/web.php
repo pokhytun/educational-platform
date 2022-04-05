@@ -17,9 +17,9 @@ Route::get('/office', [PersonalOfficeController::class, 'index'])->name('office.
 
 Route::get('/catalog/{course}', [CourseController::class, 'show'])->name('course.show');
 
-Route::get('like', [ReviewController::class, 'like'])->middleware('only.ajax');
+Route::get('like', [ReviewController::class, 'like'])->middleware('auth' ,'only.ajax');
 Route::get('commentload', [ReviewController::class, 'load'])->middleware('only.ajax');
-Route::get('commentsave', [ReviewController::class, 'save'])->middleware('only.ajax');
+Route::get('commentsave', [ReviewController::class, 'save'])->middleware('auth', 'only.ajax');
 
 
 Auth::routes();
