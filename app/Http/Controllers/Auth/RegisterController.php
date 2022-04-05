@@ -7,6 +7,7 @@ use App\Http\Requests\UserStore;
 use App\Http\Requests\UserStoreRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -29,9 +30,12 @@ class RegisterController extends Controller
  
     protected function create(array $data)
     {   
-        
-        $path = $data['photo']->store('img\users','public');
-                
+        $path = '/img/users/default.png';
+
+        if (isset($data['photo'])) {
+            $path = $data['photo']->store('img\users','public');
+        }
+          
         return User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
