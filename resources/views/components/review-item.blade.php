@@ -10,19 +10,23 @@
         </div>
         <div class="review__rating_icon">
             <div data-id_review="{{$review->id}}">
-                <svg class="icon_like likes @if($review->is_auth_user_liked_review_exists) icon_like_active @endif" data-event="1">
-                    <use href="{{asset('storage/img/front/svg/sprite.svg#icon_like')}}"></use>
-                </svg>
+                <a @if( Auth::user()) class="likes like_btn" href="#" @else href="{{route('login')}}" @endif  data-event="1"> 
+                    <svg class="icon_like @if($review->is_auth_user_liked_review_exists) icon_like_active @endif" >
+                        <use href="{{asset('storage/img/front/svg/sprite.svg#icon_like')}}"></use>
+                    </svg>
+                </a>
                 <span class="count-like">{{count($review->like)}}</span>
-                <svg class="icon_dislike likes @if($review->is_auth_user_disliked_review_exists) icon_dislike_active @endif" data-event="0">
-                    <use href="{{asset('storage/img/front/svg/sprite.svg#icon_dislike')}}"></use>
-                </svg>
+                <a @if( Auth::user()) class="likes dislike_btn" href="#" @else href="{{route('login')}}" @endif data-event="0">
+                    <svg class="icon_dislike @if($review->is_auth_user_disliked_review_exists) icon_dislike_active @endif">
+                        <use href="{{asset('storage/img/front/svg/sprite.svg#icon_dislike')}}"></use>
+                    </svg>
+                </a>
                 <span class="count-dislike">{{count($review->dislike)}}</span>
             </div>
-
         </div>
     </div>
     <p class="review__text">
         {{$review->review}}
     </p>
 </li>
+

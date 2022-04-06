@@ -36,7 +36,7 @@
         <div class="title title_purple course_margin">Ментор</div>
         <div class="about-mentor">
             <div class="mentro-img__wrapper">
-                <img src="{{asset('')}}{{$course->teacher->photo}}" alt="" class="mentor__img img-responsive">
+                <img src="{{asset('storage')}}{{$course->teacher->photo}}" alt="" class="mentor__img img-responsive">
             </div>
             <div class="mentor__info font_montserat">
                 <div class="mentor__name font_rubik">{{$course->teacher->first_name}} {{$course->teacher->last_name}}</div>
@@ -78,7 +78,7 @@
             <form class="review-form review-form_margin">
                 <textarea class="review__input" type="text" placeholder="Залишити відгук" name="textarea"></textarea>
                 <div class="review__btn">
-                    <div id="send-review"class="btn btn_bg_pink ">Коментувати</div>
+                    <a @if( Auth::user()) id="send-review" @else href="{{route('login')}}" @endif class="btn btn_bg_pink ">Коментувати</a>
                         <div class="rating-area">
                             <input type="radio" id="star-5" name="rating" value="5">
                             <label for="star-5" title="Оцінка «5»"></label>	
