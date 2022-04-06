@@ -10,10 +10,24 @@ class PersonalOfficeController extends Controller
 {
  
     public function index(){
-    
+        $user = User::find(Auth::id());
+
+        $purchasedCourses = $user->courses()
+                    ->withAvg('reviews', 'rating')
+                    ->withExists('discount')                
+                    ->get();
+
+        $preferences = $user->preferenceses()
+                        ->withAvg('reviews', 'rating')
+                        ->withExists('discount')                
+                        ->get();
+
+        
+
         return view('office.index',[
-            'user' => User::find(Auth::id()),
-            
+            'user' => Auth()->user(),
+            'purchasedCourses' => $purchasedCourses,
+            'preferencesCourses' => $preferences,
         ]);
     }
 }
