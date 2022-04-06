@@ -23,7 +23,6 @@ class ReviewController extends BaseController
 
     public function save(Request $request){
 
-    
         $review =  CourseReviews::create([
             'rating' => $request->review_rating,
             'course_id' => $request->course_id,

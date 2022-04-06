@@ -44,7 +44,7 @@
                 <nav class="additional-info">
                     <ul>
                         <li class="additional-info__item">{{count($course->teacher->teaching)}} курси</li>
-                        <li class="additional-info__item">247 студентів</li>
+                        <li class="additional-info__item">{{$course->teacher_count_students}} студентів</li>
                     </ul>
                 </nav>
             </div>
@@ -94,10 +94,7 @@
                 </div>
             </form>
             <nav class="reviews__list">
-                <ul id="my-comment">
-                    
-                </ul>
-                <ul id="comment-data" data-count="{{$comm_sum}}">
+                <ul id="comment-data" data-count="{{count($course->reviews)}}">
                     
                 </ul>
             </nav>
@@ -126,12 +123,12 @@
                         @endif
                     </div>
 
-                    <div class="course-feature course_margin">
+                    <div class="course-feature">
                         <ul class="course-feature__list">
-                            <li class="course-feature_item">24 модуля</li>
-                            <li class="course-feature_item">24 модуля</li>
-                            <li class="course-feature_item">24 модуля</li>
-                            <li class="course-feature_item">24 модуля</li>
+                            <li class="course-feature_item"><span class="icon_mark"></span>{{count($course->buyers)}} студентів</li>
+                            <li class="course-feature_item"><span class="icon_mark"></span>{{count($course->modules)}} Модулів</li>
+                            <li class="course-feature_item"><span class="icon_mark"></span>{{count($course->reviews)}} відгуків</li>
+                            <li class="course-feature_item"><span class="icon_mark"></span>{{bcdiv($course->reviews_avg_rating , 1, 1);}} рейтинг</li>
                         </ul>
                     </div>
                     <div class="course-card__btn">

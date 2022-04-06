@@ -56,5 +56,7 @@ class Course extends Model
         return $filter->apply($builder);
     }
 
-  
+    public function getTeacherCountStudentsAttribute(){
+        return $this->teacher->teaching()->withCount('buyers')->get()->sum('buyers_count');
+    }
 }
