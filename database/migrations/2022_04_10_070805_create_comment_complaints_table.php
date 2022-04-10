@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('comment_reivews', function (Blueprint $table) {
+        Schema::create('comment_complaints', function (Blueprint $table) {
             $table->id();
-
-            $table->text('comment');
-            $table->softDeletes();
-
+            
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('review_id');
             
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comment_reivews');
+        Schema::dropIfExists('comment_complaints');
     }
 };

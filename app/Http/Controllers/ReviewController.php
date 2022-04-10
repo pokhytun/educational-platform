@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\CommentComplaint;
 use App\Models\CourseReviews;
 use App\Models\Like;
 use Illuminate\Http\Request;
@@ -33,4 +33,15 @@ class ReviewController extends BaseController
         $view = view('components.review-item', ['review' => $review])->render();
         return response()->json(['html'=>$view]);
     }
+
+    public function complaints(Request $request){
+
+        CommentComplaint::create([
+            'user_id' => Auth()->id(),
+            'review_id' => $request->review_id,
+        ]);
+
+        return response()->json($request->review_id);
+    }
+    
 }

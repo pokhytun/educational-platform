@@ -25,8 +25,14 @@
             </div>
         </div>
     </div>
-    <p class="review__text">
+    
+    <p class="review__text" >
         {{$review->review}}
+        @if($review->is_auth_user_complained_review_exists)
+            <a data-id_review="{{$review->id}}" @if( Auth::user()) id="review-complaint" href="#" @else href="{{route('login')}}" @endif class="review__complaint link_disactive"> Скарга відправлена</a>
+        @else 
+            <a data-id_review="{{$review->id}}"  @if( Auth::user()) id="review-complaint" href="#" @else href="{{route('login')}}" @endif class="review__complaint"> Поскарржитись</a>
+        @endif
     </p>
 </li>
 

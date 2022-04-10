@@ -6,7 +6,7 @@
     @include('admin.components.general-info', ['title' => 'Корисутвачів' , 'count'=> count($users), 'icon' => 'bxs-user-check' , 'link'=>'admin.users.list'])
     @include('admin.components.general-info', ['title' => 'Викладачів' , 'count'=> count($teachers), 'icon' => 'bxs-user-voice' , 'link'=>'admin.teachers.list'])
     @include('admin.components.general-info', ['title' => 'Нових користувачів' , 'count'=> count($newUsers), 'icon' => 'bxs-user-plus' , 'link'=>'home.index'])
-    @include('admin.components.general-info', ['title' => 'Скарги' , 'count'=> 150, 'icon' => 'bx-user-x' , 'link'=>'home.index'])
+    @include('admin.components.general-info', ['title' => 'Скарги' , 'count'=> count($complaints), 'icon' => 'bx-user-x' , 'link'=>'admin.complaints.list'])
 
   </div>
 </div>

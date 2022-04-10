@@ -23,9 +23,17 @@ class CourseReviews extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function userAdmin(){
+        return $this->belongsTo(User::class, 'user_id')->withTrashed();
+    }
+
     public function likes(){
         return $this->hasMany(Like::class,'review_id');
     }
+
+    public function complaints(){
+        return $this->hasMany(CommentComplaint::class, 'review_id');
+    } 
 
     public function isAuthUserLikedReview(){
         return $this->likes()->where('user_id',  auth()->id())->where('is_like', 1);
@@ -33,6 +41,10 @@ class CourseReviews extends Model
 
     public function isAuthUserDislikedReview(){
         return $this->likes()->where('user_id',  auth()->id())->where('is_like', 0);
+    }
+
+    public function isAuthUserComplainedReview(){
+        return $this->complaints()->where('user_id',  auth()->id());
     }
 
     public function getLikeAttribute(){
@@ -46,5 +58,10 @@ class CourseReviews extends Model
     public function getDateDiffAttribute(){
         return Carbon::now()->longAbsoluteDiffForHumans($this->created_at);
     }
-
+    
+    public function scopeAppealed($query){
+        return $query->withExists('complaints')->withCount('complaints')->withTrashed()->get()->where('complaints_exists',1);
+    
+    }
+  
 }

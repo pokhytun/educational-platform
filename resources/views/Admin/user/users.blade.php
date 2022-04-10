@@ -30,7 +30,7 @@
             <td>{{$user->email}}</td>
             <td>{{$user->phone_number}}</td>
             <td>{{$user->created_at}} </td>
-            <td>{{$user->deletet_at ? $user->deleted_at : 'Активний'}}</td>
+            <td>{{$user->deleted_at ? $user->deleted_at : 'Активний'}}</td>
           </tr>
         @endforeach       
       </tbody>

@@ -49,7 +49,11 @@ class CourseService{
     public function loadCommentAjax($request){
         $course = Course::find($request->course_id);
 
-        $comm = $course->reviews()->orderBy('created_at', 'DESC')->withExists('isAuthUserLikedReview')->withExists('isAuthUserDislikedReview')->get();
+        $comm = $course->reviews()->orderBy('created_at', 'DESC')
+        ->withExists('isAuthUserLikedReview')
+        ->withExists('isAuthUserDislikedReview')
+        ->withExists('isAuthUserComplainedReview')
+        ->get();
 
         $view = view('components.review-item', ['review' => $comm[$request->comment_id]])->render();
         

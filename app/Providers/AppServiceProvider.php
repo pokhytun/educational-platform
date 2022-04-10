@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        View::composer(['admin.user.index', 'admin.user.users', 'admin.user.teachers'], UserComposer::class);
+        View::composer(['admin.user.index', 'admin.user.users', 'admin.user.teachers', 'admin.user.complaints'], UserComposer::class);
     }
 }
