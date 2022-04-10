@@ -33,7 +33,7 @@ class Course extends Model
     }
 
     public function buyers(){
-        return $this->belongsToMany(User::class, 'sold_courses');
+        return $this->belongsToMany(User::class, 'sold_courses')->withPivot('price');;
     }
 
     public function objectives(){

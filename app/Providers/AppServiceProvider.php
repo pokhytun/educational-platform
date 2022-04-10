@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
+use App\Http\View\Composers\UserComposer;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,13 +18,9 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
+
     public function boot()
     {
-        
+        View::composer(['admin.user.index', 'admin.user.users', 'admin.user.teachers'], UserComposer::class);
     }
 }

@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Course::class,'user_id');
     }
 
+    public function getTeacherCountStudentsAttribute(){
+        return $this->teaching()->withCount('buyers')->get()->sum('buyers_count');
+    }
+    
     public function likes(){
         return $this->hasMany(Like::class);
     }
@@ -56,5 +60,5 @@ class User extends Authenticatable
    }
 
    
-   
+
 }
