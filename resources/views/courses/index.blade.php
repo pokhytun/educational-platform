@@ -12,7 +12,7 @@
             <aside class="catalog-filter">
                 <div class="catalog-filter__container">
 
-                    <form class="aside-block aside-block_margin" method="GET" action="{{route('catalog.index')}}">
+                    <form class="aside-block aside-block_margin" method="GET" action="{{route('courses.index')}}">
                         <div class="aside__title font_rubik">
                             <span class="aside-btn">Категорії</span>
                             <svg class="aside__svg"></svg>

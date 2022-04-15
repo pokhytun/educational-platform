@@ -14,7 +14,7 @@
 <body>
     <header class="header">
         <a href="{{route('home.index')}}" class="logo"><img src="{{asset('storage/img/front/logo.png')}}" alt="Logoipsum"></a>
-        <form action="{{route('catalog.index')}}" class="search-form">
+        <form action="{{route('courses.index')}}" class="search-form">
             @csrf
             <div class="search-form__body search-form__body_with_icon">
                 <input class="search-form__input" name="search_field" laceholder="Шукати тут...">

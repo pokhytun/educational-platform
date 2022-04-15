@@ -49,7 +49,7 @@
                 @endforeach                  
             </div>
             <div class="trending-courses__more">
-                <a href="{{route('catalog.index')}}"class="btn btn_bg_pink">Більше курсів</a>
+                <a href="{{route('courses.index')}}"class="btn btn_bg_pink">Більше курсів</a>
             </div>
         </div>
     </div>

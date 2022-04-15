@@ -48,15 +48,16 @@ class Course extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getPriceWithDiscountAttribute(){
-        return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
-    }
-
     public function scopeFilter(Builder $builder, QueryFilter $filter){
         return $filter->apply($builder);
+    }
+
+    public function getPriceWithDiscountAttribute(){
+        return $this->price->price - ($this->price->price / 100 * $this->discount->size_discount);
     }
 
     public function getTeacherCountStudentsAttribute(){
         return $this->teacher->teaching()->withCount('buyers')->get()->sum('buyers_count');
     }
+    
 }

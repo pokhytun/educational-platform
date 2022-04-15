@@ -5,6 +5,6 @@
     </div>
     <div class="error__btn">
         <a class="btn btn_bg_transparent" href="{{route('home.index')}}">На головну</a>
-        <a class="btn btn_bg_transparent" href="{{route('catalog.index')}}">До каталогу</a>
+        <a class="btn btn_bg_transparent" href="{{route('courses.index')}}">До каталогу</a>
     </div>
 </div>
