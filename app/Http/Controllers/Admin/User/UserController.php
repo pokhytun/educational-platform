@@ -19,16 +19,5 @@ class UserController extends Controller
         return view('admin.user.teachers');
     }
 
-    public function complaints(){
 
-        return view('admin.user.complaints', ['compleints' => CourseReviews::Appealed()]);
-    }
-
-    public function delete($id){
-
-        CourseReviews::find($id)->delete();
-        
-
-        return redirect()->back();
-    }
 }

@@ -2,27 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CommentComplaint;
 use App\Models\CourseReviews;
-use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends BaseController
 {
-    public function like(Request $request){
-
-      $res =  $this->service->toggleLike($request); // лайки
-       
-      return response()->json(['like_count' => $res['like_count'], 'dislike_count' => $res['dislike_count']]);
-    }
-
-    public function load(Request $request){
+    
+    public function index(Request $request){
         return $this->service->loadCommentAjax($request);
     }
-
-    public function save(Request $request){
-
+    
+    public function create(Request $request){
         $review =  CourseReviews::create([
             'rating' => $request->review_rating,
             'course_id' => $request->course_id,
@@ -34,14 +25,16 @@ class ReviewController extends BaseController
         return response()->json(['html'=>$view]);
     }
 
-    public function complaints(Request $request){
-
-        CommentComplaint::create([
-            'user_id' => Auth()->id(),
-            'review_id' => $request->review_id,
-        ]);
-
-        return response()->json($request->review_id);
+    public function like(Request $request){
+    
+        $res =  $this->service->toggleLike($request); // лайки
+             
+        return response()->json(['like_count' => $res['like_count'], 'dislike_count' => $res['dislike_count']]);
     }
     
+    public function destroy($id){
+        CourseReviews::where('id',$id)->delete();
+
+        return redirect()->back();
+    }
 }

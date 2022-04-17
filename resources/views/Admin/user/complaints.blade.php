@@ -26,7 +26,13 @@
             @if($complaint->deleted_at)
               <td>Комент забанено</td>
             @else
-              <td class="admin-action"> <a href="{{route('admin.complaints.delete', $complaint->id)}}" class="btn_bg_pink table-action__btn">Видалити</a></td>
+              <td class="admin-action"> 
+                <form action="{{route('reviews.destroy', $complaint->id)}}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <input type="submit" class="btn_bg_pink table-action__btn" value="Видалити">
+                </form>
+              </td>
             @endif
           </tr>
         @endforeach       
